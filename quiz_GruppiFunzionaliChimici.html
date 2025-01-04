@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sui Gruppi Funzionali Chimici</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5f6bdf;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 60px;
+            border: #333;
+            border-color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            overflow-y: auto;
+            max-height: 75vh;
+        }
+
+        p {
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .wrong {
+            color: red;
+            font-weight: bold;
+        }
+
+        #score-feedback {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            #score-feedback {
+                font-size: 16px;
+            }
+        }
+    </style>
+    <script>
+        function checkAnswers() {
+            let score = 0;
+
+            // Controlla tutte le domande
+            for (let i = 1; i <= 23; i++) {
+                const question = document.querySelector(`input[name="question${i}"]:checked`);
+                const feedback = document.getElementById(`question${i}-feedback`);
+                if (question && question.value === "correct") {
+                    feedback.textContent = "Risposta corretta!";
+                    feedback.className = "correct";
+                    score++;
+                } else {
+                    feedback.textContent = "Risposta sbagliata.";
+                    feedback.className = "wrong";
+                }
+            }
+
+            // Mostra il punteggio
+            const scoreDiv = document.getElementById('score-feedback');
+            scoreDiv.textContent = `Hai ottenuto ${score} su 23!`;
+
+            // Mostra il pulsante per ritentare
+            document.getElementById('retry-button').style.display = 'block';
+        }
+
+        function retryQuiz() {
+            document.getElementById('quiz-form').reset();
+            document.querySelectorAll('.correct, .wrong').forEach(el => el.textContent = '');
+            document.getElementById('score-feedback').textContent = '';
+            document.getElementById('retry-button').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz sui Gruppi Funzionali Chimici</h1>
+
+        <form id="quiz-form">
+            
+            <div class="question">
+                <p><strong>1. Quale dei seguenti è un gruppo carbonilico?</strong></p>
+                <label><input type="radio" name="question1" value="correct"> C=O</label><br>
+                <label><input type="radio" name="question1" value="wrong"> OH</label><br>
+                <label><input type="radio" name="question1" value="wrong"> NH2</label><br>
+                <div id="question1-feedback" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p><strong>2. Quale gruppo funzionale è presente negli alcoli?</strong></p>
+                <label><input type="radio" name="question2" value="wrong"> C=O</label><br>
+                <label><input type="radio" name="question2" value="correct"> OH</label><br>
+                <label><input type="radio" name="question2" value="wrong"> COOH</label><br>
+                <div id="question2-feedback" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p><strong>3. Quale dei seguenti è un gruppo carbossilico?</strong></p>
+                <label><input type="radio" name="question3" value="wrong"> NH2</label><br>
+                <label><input type="radio" name="question3" value="wrong"> C=O</label><br>
+                <label><input type="radio" name="question3" value="correct"> COOH</label><br>
+                <div id="question3-feedback" class="feedback"></div>
+            </div>
+
+            
+            <div class="question">
+                <p><strong>4. Quale gruppo funzionale è presente negli ammine?</strong></p>
+                <label><input type="radio" name="question4" value="wrong"> OH</label><br>
+                <label><input type="radio" name="question4" value="wrong"> C=O</label><br>
+                <label><input type="radio" name="question4" value="correct"> NH2</label><br>
+                <div id="question4-feedback" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p><strong>5. Quale gruppo funzionale è tipico degli acidi carbossilici?</strong></p>
+                <label><input type="radio" name="question5" value="wrong"> C=O</label><br>
+                <label><input type="radio" name="question5" value="wrong"> NH2</label><br>
+                <label><input type="radio" name="question5" value="correct"> COOH</label><br>
+                <div id="question5-feedback" class="feedback"></div>
+            </div>
+
+
+            <div class="question">
+                <p><strong>6. Quale dei seguenti è un gruppo alchilico?</strong></p>
+                <label><input type="radio" name="question6" value="correct"> -CH3</label><br>
+                <label><input type="radio" name="question6" value="wrong"> -OH</label><br>
+                <label><input type="radio" name="question6" value="wrong"> -COOH</label><br>
+                <div id="question6-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>7. Quale gruppo funzionale è presente nei fenoli?</strong></p>
+                <label><input type="radio" name="question7" value="wrong"> NH2</label><br>
+                <label><input type="radio" name="question7" value="correct"> OH</label><br>
+                <label><input type="radio" name="question7" value="wrong"> C=O</label><br>
+                <div id="question7-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>8. Quale gruppo funzionale è presente nei chetoni?</strong></p>
+                <label><input type="radio" name="question8" value="correct"> C=O</label><br>
+                <label><input type="radio" name="question8" value="wrong"> -NH2</label><br>
+                <label><input type="radio" name="question8" value="wrong"> -COOH</label><br>
+                <div id="question8-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>9. Quale dei seguenti gruppi funzionali è un gruppo etere?</strong></p>
+                <label><input type="radio" name="question9" value="wrong"> -COOH</label><br>
+                <label><input type="radio" name="question9" value="correct"> -O-</label><br>
+                <label><input type="radio" name="question9" value="wrong"> -NH2</label><br>
+                <div id="question9-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>10. Quale gruppo funzionale è presente nelle aldeidi?</strong></p>
+                <label><input type="radio" name="question10" value="correct"> C=O</label><br>
+                <label><input type="radio" name="question10" value="wrong"> -NH2</label><br>
+                <label><input type="radio" name="question10" value="wrong"> -OH</label><br>
+                <div id="question10-feedback" class="feedback"></div>
+            </div>
+            
+            
+            <div class="question">
+                <p><strong>11. Quale elemento chimico è legato al carbonio nel gruppo -OH?</strong></p>
+                <label><input type="radio" name="question1" value="correct"> Ossigeno</label><br>
+                <label><input type="radio" name="question1" value="wrong"> Azoto</label><br>
+                <label><input type="radio" name="question1" value="wrong"> Zolfo</label><br>
+                <div id="question1-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>12. Nel gruppo funzionale -COOH, quale legame è presente tra il carbonio e l'ossigeno?</strong></p>
+                <label><input type="radio" name="question2" value="correct"> Legame doppio</label><br>
+                <label><input type="radio" name="question2" value="wrong"> Legame singolo</label><br>
+                <label><input type="radio" name="question2" value="wrong"> Legame triplo</label><br>
+                <div id="question2-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>13. Quale atomo è presente nel gruppo funzionale -NH2?</strong></p>
+                <label><input type="radio" name="question3" value="correct"> Azoto</label><br>
+                <label><input type="radio" name="question3" value="wrong"> Carbonio</label><br>
+                <label><input type="radio" name="question3" value="wrong"> Ossigeno</label><br>
+                <div id="question3-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>14. Nel gruppo carbonilico, quale legame è presente tra il carbonio e l'ossigeno?</strong></p>
+                <label><input type="radio" name="question4" value="correct"> Legame doppio</label><br>
+                <label><input type="radio" name="question4" value="wrong"> Legame singolo</label><br>
+                <label><input type="radio" name="question4" value="wrong"> Legame triplo</label><br>
+                <div id="question4-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>15. Quale elemento chimico è presente nel gruppo funzionale -C=O in un chetone?</strong></p>
+                <label><input type="radio" name="question5" value="correct"> Ossigeno</label><br>
+                <label><input type="radio" name="question5" value="wrong"> Azoto</label><br>
+                <label><input type="radio" name="question5" value="wrong"> Idrogeno</label><br>
+                <div id="question5-feedback" class="feedback"></div>
+            </div>
+
+            <div class="question">
+                <p><strong>16. Quale dei seguenti gruppi funzionali contiene un legame N-H?</strong></p>
+                <label><input type="radio" name="question1" value="correct"> Ammina (-NH2)</label><br>
+                <label><input type="radio" name="question1" value="wrong"> Aldeide (-CHO)</label><br>
+                <label><input type="radio" name="question1" value="wrong"> Etere (-O-)</label><br>
+                <div id="question1-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>17. Indovina il gruppo funzionale! Si trova nelle aldeidi, ha un ossigeno legato a un carbonio con un doppio legame.</strong></p>
+                <label><input type="radio" name="question2" value="correct"> Carbonilico (-C=O)</label><br>
+                <label><input type="radio" name="question2" value="wrong"> Carbossilico (-COOH)</label><br>
+                <label><input type="radio" name="question2" value="wrong"> Alcolico (-OH)</label><br>
+                <div id="question2-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>18. Quanti atomi di carbonio sono coinvolti nel legame del gruppo -C=O in un chetone?</strong></p>
+                <label><input type="radio" name="question3" value="correct"> Due atomi di carbonio</label><br>
+                <label><input type="radio" name="question3" value="wrong"> Uno solo</label><br>
+                <label><input type="radio" name="question3" value="wrong"> Tre atomi di carbonio</label><br>
+                <div id="question3-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>19. Quale di questi gruppi funzionali ha un atomo di ossigeno che separa due catene di carbonio?</strong></p>
+                <label><input type="radio" name="question4" value="correct"> Etere (-O-)</label><br>
+                <label><input type="radio" name="question4" value="wrong"> Acido carbossilico (-COOH)</label><br>
+                <label><input type="radio" name="question4" value="wrong"> Alcol (-OH)</label><br>
+                <div id="question4-feedback" class="feedback"></div>
+            </div>
+            
+            <div class="question">
+                <p><strong>20. Quale gruppo funzionale è un tipico caratterizzante per gli esteri, unione tra un acido e un alcol?</strong></p>
+                <label><input type="radio" name="question5" value="correct"> Esteri (-COO-)</label><br>
+                <label><input type="radio" name="question5" value="wrong"> Amidi (-CONH2)</label><br>
+                <label><input type="radio" name="question5" value="wrong"> Aldeidi (-CHO)</label><br>
+                <div id="question5-feedback" class="feedback"></div>
+            </div>
+            
+            
+            
+
+            <button type="button" onclick="checkAnswers()">Controlla le risposte</button>
+        </form>
+
+        <div id="score-feedback" class="score-feedback"></div>
+        <button id="retry-button" class="retry-button" onclick="retryQuiz()">Ritenta il quiz</button>
+    </div>
+</body>
+</html>
